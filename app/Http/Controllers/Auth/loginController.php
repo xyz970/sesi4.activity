@@ -25,7 +25,8 @@ class loginController extends Controller
                 'password'=>$input['password']
         );
         if (Auth::attempt($credentials)){
-//            dd(Auth::user()->type == 1);
+            //Ambil type dan sesuaikan dengan db
+            // 1 => Admin, 2 => Manager, 0 => User
             if (Auth::user()->type == 1){
                 return redirect()->route('admin.home');
             } else if (Auth::user()->type == 2){

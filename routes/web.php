@@ -21,6 +21,11 @@ Route::get('login',[\App\Http\Controllers\Auth\loginController::class,'loginPage
 Route::group(['prefix'=>'auth','as'=>'auth.'],function(){
     Route::post('login_process',[\App\Http\Controllers\Auth\loginController::class,'login'])->name('login_process');
 });
+
+/**
+ * Keterngan userType
+ * // 1 => Admin, 2 => Manager, 0 => User
+ */
 Route::get('admin/home',function (){
     return 'Admin Home';
 })->name('admin.home')->middleware(['auth','user-access:1']);
